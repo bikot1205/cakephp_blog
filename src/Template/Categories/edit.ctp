@@ -24,7 +24,9 @@
     <fieldset>
         <legend><?= __('Edit Category') ?></legend>
         <?php
-            echo $this->Form->control('parent_id', ['options' => $parentCategories]);
+            echo $this->Form->control('parent_id', 
+                ['options' => $parentCategories,
+                'empty' => 'No parent category']);
             echo $this->Form->control('name');
             echo $this->Form->control('description');
         ?>
