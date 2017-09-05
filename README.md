@@ -17,3 +17,7 @@ Add config file and load in config/bootstrap.php
 ## Middleware
 
 src/Middleware/TrackingCookieMiddleware.php
+
+## Component
+
+src/Controller/Component/MathComponent.php

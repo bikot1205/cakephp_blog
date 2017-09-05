@@ -4,6 +4,12 @@
   * @var \App\Model\Entity\Universe[]|\Cake\Collection\CollectionInterface $universes
   */
 ?>
+
+<div class="row">
+  <div class="col-md-12">
+    <span><strong>MathComponent : <?= $mathComponent ?></strong></span>
+  </div>
+</div>  
 <div class="row">
   <div class="col-md-12">
     <h1><?= __('Universes') ?></h1>

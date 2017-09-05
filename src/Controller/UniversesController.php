@@ -14,6 +14,11 @@ use Cake\Core\Configure;
 class UniversesController extends AppController
 {
 
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadComponent('Math');
+    }
     /**
      * Index method
      *
@@ -22,8 +27,8 @@ class UniversesController extends AppController
     public function index()
     {
         $universes = $this->paginate($this->Universes);
-
-        $this->set(compact('universes'));
+        $mathComponent = $this->Math->doComplexOperation(3, 5);
+        $this->set(compact('universes', 'mathComponent'));
         $this->set('_serialize', ['universes']);
     }
 
