@@ -3,6 +3,9 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\Core\Configure;
+use Cake\Chronos\Chronos;
+use Cake\Chronos\Date;
+use Cake\Chronos\ChronosInterface;
 
 /**
  * Universes Controller
@@ -19,6 +22,60 @@ class UniversesController extends AppController
         parent::initialize();
         $this->loadComponent('Math');
     }
+    
+    public function customize()
+    {
+        $mathComponent = $this->Math->doComplexOperation(3, 5);
+        $this->set(compact('mathComponent'));
+
+        // Chronos
+        $now = Chronos::now();
+        $today = Chronos::today();
+        $yesterday = Chronos::yesterday();
+        $tomorrow = Chronos::tomorrow();
+        // 相対式のパース
+        $date = Chronos::parse('+2 days, +3 hours');
+        // 日付と時間の整数値
+        $date = Chronos::create(2015, 12, 25, 4, 32, 58);
+        // 日付または時間の整数値
+        $date = Chronos::createFromDate(2015, 12, 25);
+        $date = Chronos::createFromTime(11, 45, 10);
+        // 整形した値にパース
+        $date = Chronos::createFromFormat('m/d/Y', '06/15/2015');
+        
+        $date = Date::create()
+            ->year(2015)
+            ->month(10)
+            ->day(31)
+            ->hour(20)
+            ->minute(30);
+
+        $date = Date::create()
+            ->addYear(1)
+            ->subMonth(2)
+            ->addDays(15)
+            ->addHours(20)
+            ->subMinutes(2);
+
+        $time = Chronos::create();
+        /*
+        $time->startOfDay();
+        $time->endOfDay();
+        $time->startOfMonth();
+        $time->endOfMonth();
+        $time->startOfYear();
+        $time->endOfYear();
+        $time->startOfWeek();
+        $time->endOfWeek(); 
+        $time->previous(ChronosInterface::MONDAY);
+        */
+        $time = $time->next(ChronosInterface::TUESDAY);
+
+        Chronos::setTestNow(new Chronos('1975-12-25 00:00:00'));
+        $time = new Chronos();        
+        $this->set(compact('mathComponent', 'now', 'today', 'tomorrow', 'date', 'time'));
+    }
+
     /**
      * Index method
      *
@@ -27,8 +84,7 @@ class UniversesController extends AppController
     public function index()
     {
         $universes = $this->paginate($this->Universes);
-        $mathComponent = $this->Math->doComplexOperation(3, 5);
-        $this->set(compact('universes', 'mathComponent'));
+        $this->set(compact('universes'));
         $this->set('_serialize', ['universes']);
     }
 
