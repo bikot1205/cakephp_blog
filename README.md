@@ -26,3 +26,10 @@ src/Controller/Component/MathComponent.php
 
 【controller】universes#customize
 
+# Customize PasswordHasher
+
+* src/Auth/LegacyPasswordHasher.php
+* src/Controller/AppController.php
+
+
+

@@ -3,9 +3,11 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\Core\Configure;
-use Cake\Chronos\Chronos;
-use Cake\Chronos\Date;
-use Cake\Chronos\ChronosInterface;
+//use Cake\Chronos\Chronos;
+//use Cake\Chronos\Date;
+//use Cake\Chronos\ChronosInterface;
+use Cake\I18n\Time;
+use Cake\Utility\Xml;
 
 /**
  * Universes Controller
@@ -27,8 +29,8 @@ class UniversesController extends AppController
     {
         $mathComponent = $this->Math->doComplexOperation(3, 5);
         $this->set(compact('mathComponent'));
-
         // Chronos
+        /*
         $now = Chronos::now();
         $today = Chronos::today();
         $yesterday = Chronos::yesterday();
@@ -68,12 +70,41 @@ class UniversesController extends AppController
         $time->startOfWeek();
         $time->endOfWeek(); 
         $time->previous(ChronosInterface::MONDAY);
-        */
         $time = $time->next(ChronosInterface::TUESDAY);
 
         Chronos::setTestNow(new Chronos('1975-12-25 00:00:00'));
         $time = new Chronos();        
-        $this->set(compact('mathComponent', 'now', 'today', 'tomorrow', 'date', 'time'));
+        $this->set(compact('now', 'today', 'tomorrow', 'date', 'time'));
+        */
+        //$now = Time::now();
+        //Time::setToStringFormat(\IntlDateFormatter::SHORT);
+        Time::setToStringFormat('yyyy-MM-dd HH:mm:ss'); 
+        $now = Time::parse('now');
+        $now = $now->modify('+5 days');
+        //$now  = $now->i18nFormat('yyyy-MM-dd HH:mm:ss');
+        $time = Time::now();
+        $this->set(compact('now', 'time'));
+
+        $data = [
+            'post' => [
+                'id' => 1,
+                'title' => 'Best post',
+                'body' => 'post content'
+            ]
+        ];
+
+        // XML->Array  
+        /*
+        $xmlString = '<?xml version="1.0"?><root><child>value</child></root>';
+        $xmlArray = Xml::toArray(Xml::build($xmlString));
+        $this->set(compact('xmlArray')); 
+        */
+
+        $xmlArray = ['root' => ['child' => 'value']];
+        // Xml::build() を使うこともできます
+        $xmlObject = Xml::fromArray($xmlArray, ['format' => 'tags']);
+        $xmlString = $xmlObject->asXML();
+        $this->set(compact('xmlString'));       
     }
 
     /**

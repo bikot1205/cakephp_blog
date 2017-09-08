@@ -53,6 +53,13 @@ class AppController extends Controller
         //$this->loadComponent('Csrf');
         $this->loadComponent('Auth', [
             'authorize' => ['Controller'], // Added this line
+            'authenticate' => [
+                'Form' => [
+                    'passwordHasher' => [
+                        'className' => 'Legacy',
+                    ]
+                ]
+            ],
             'loginRedirect' => [
                 'controller' => 'Articles',
                 'action' => 'index'

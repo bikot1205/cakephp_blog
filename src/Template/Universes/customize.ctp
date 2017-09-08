@@ -14,28 +14,16 @@
           <td><?= $now ?></td>
         </tr>
         <tr>
-          <td>Today</td>
-          <td><?= $today ?></td>
-        </tr>
-        <tr>
-          <td>Tomorrow</td>
-          <td><?= $tomorrow ?></td>
-        </tr>
-        <tr>
-          <td>Date</td>
-          <td><?= $date ?></td>
-        </tr>
-        <tr>
           <td>Time</td>
           <td><?= $time ?></td>
         </tr>
         <tr>
-          <td>Time:startOfDay</td>
-          <td><?= $time->startOfDay() ?></td>
+          <td>Time:Quarter</td>
+          <td><?= $time->toQuarter() ?></td>
         </tr>
         <tr>
-          <td>Time:startOfWeek</td>
-          <td><?= $time->startOfWeek() ?></td>
+          <td>XML</td>
+          <td><?= $xmlString ?></td>
         </tr>
       </tbody>  
     </table>
