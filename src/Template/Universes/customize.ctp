@@ -23,7 +23,7 @@
         </tr>
         <tr>
           <td>XML</td>
-          <td><?= $xmlString ?></td>
+          <td><?= debug($xmlString) ?></td>
         </tr>
       </tbody>  
     </table>

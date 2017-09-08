@@ -8,6 +8,8 @@ use Cake\Core\Configure;
 //use Cake\Chronos\ChronosInterface;
 use Cake\I18n\Time;
 use Cake\Utility\Xml;
+use Cake\Error\Debugger;
+use Cake\Log\Log;
 
 /**
  * Universes Controller
@@ -104,7 +106,16 @@ class UniversesController extends AppController
         // Xml::build() を使うこともできます
         $xmlObject = Xml::fromArray($xmlArray, ['format' => 'tags']);
         $xmlString = $xmlObject->asXML();
-        $this->set(compact('xmlString'));       
+        $this->set(compact('xmlString'));
+
+        // デバッグ
+        pr(Debugger::trace());
+        debug($xmlString);
+        pr(Debugger::getType($xmlArray));
+        pr(Debugger::excerpt(CONFIG . 'paths.php', 52, 2));
+        Log::debug($xmlString);
+        Log::error($xmlString);
+
     }
 
     /**
