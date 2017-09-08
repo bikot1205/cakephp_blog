@@ -31,9 +31,12 @@ src/Controller/Component/MathComponent.php
 * src/Auth/LegacyPasswordHasher.php
 * src/Controller/AppController.php
 
-# Debug and Log
+# Debug
 
 【controller】universes#customize
 
+# Log and Monolog
+
+* config/bootstrap.php
 
 

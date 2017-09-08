@@ -12,7 +12,8 @@
         "cakephp/plugin-installer": "~1.0",
         "josegonzalez/dotenv": "2.*",
         "friendsofcake/bootstrap-ui": "^1.2",
-        "cakephp/chronos": "@stable"
+        "cakephp/chronos": "@stable",
+        "monolog/monolog": "^1.23"
     },
     "require-dev": {
         "psy/psysh": "@stable",

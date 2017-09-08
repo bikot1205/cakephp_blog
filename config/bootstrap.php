@@ -44,6 +44,9 @@ use Cake\Mailer\Email;
 use Cake\Utility\Inflector;
 use Cake\Utility\Security;
 
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+
 /**
  * Read .env file if APP_NAME is not set.
  *
@@ -218,3 +221,15 @@ if (Configure::read('debug')) {
 }
 
 Plugin::load('BootstrapUI');
+
+Log::config('default', function () {
+    $log = new Logger('app');
+    $log->pushHandler(new StreamHandler(LOGS . 'monolog.log'));
+    return $log;
+});
+
+// オプションで、今使っていない不要なデフォルトのロガーを止めてください
+Log::drop('debug');
+Log::drop('error');
+Log::drop('special');
+

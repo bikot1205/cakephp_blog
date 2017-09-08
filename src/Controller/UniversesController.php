@@ -109,13 +109,15 @@ class UniversesController extends AppController
         $this->set(compact('xmlString'));
 
         // デバッグ
-        pr(Debugger::trace());
-        debug($xmlString);
-        pr(Debugger::getType($xmlArray));
-        pr(Debugger::excerpt(CONFIG . 'paths.php', 52, 2));
+        // pr(Debugger::trace());
+        // debug($xmlString);
+        // pr(Debugger::getType($xmlArray));
+        // pr(Debugger::excerpt(CONFIG . 'paths.php', 52, 2));
+        // Log::debug($xmlString);
+        // Log::error($xmlString);
+        // Log::special($xmlString);
+        // Log::error($xmlString, ['scope' => ['universes']]);
         Log::debug($xmlString);
-        Log::error($xmlString);
-
     }
 
     /**
