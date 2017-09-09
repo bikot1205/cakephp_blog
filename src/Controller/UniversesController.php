@@ -13,6 +13,8 @@ use Cake\Log\Log;
 
 use App\Error\MissingWidgetException;
 
+use Cake\Mailer\Email;
+
 /**
  * Universes Controller
  *
@@ -119,9 +121,34 @@ class UniversesController extends AppController
         // Log::error($xmlString);
         // Log::special($xmlString);
         // Log::error($xmlString, ['scope' => ['universes']]);
-        Log::debug($xmlString);
+        // Log::debug($xmlString);
 
-        throw new MissingWidgetException(['widget' => 'Pointy']);
+        //throw new MissingWidgetException(['widget' => 'Pointy']);
+        // Email
+        /*
+        $email = new Email('default');
+        $email->from(['xxx@gmail.com' => 'My Site'])
+              ->to('yyy@gmail.com')
+              ->subject('Angle正念')
+              ->send('Message From Gold. 正行');
+        */
+        // Email Template      
+        $email = new Email();
+        $email->template('welcome', 'default')
+              ->emailFormat('html')
+              ->to('yyy@gmail.com')
+              ->from('xxx@gmail.com')
+              ->subject('Angle正念')
+              ->viewVars(['mail_params' => 'fine day'])
+              ->attachments([
+                'photo.png' => [
+                'file' => WWW_ROOT . 'img/cake.power.gif',
+                'mimetype' => 'image/png',
+                'contentId' => 'my-unique-id'
+                ]
+              ])
+              ->send();
+      
     }
 
     /**

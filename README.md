@@ -42,8 +42,11 @@ src/Controller/Component/MathComponent.php
 # Exception
 
 * src/Error/MissingWidgetException.php
-* src/Template/Error/missing_Widget.ctp
+* src/Template/Error/missing_widget.ctp
 * src/Error/AppExceptionRenderer.php
 
+# Email
+
+* src/Template/Email/html/welcome.ctp
 
 

@@ -12,10 +12,10 @@ class AppExceptionRenderer extends ExceptionRenderer
         debug($error);
         return 'おっとウィジェットが見つからない！';
     }
-    
+    /*
     protected function _getController($exception)
     {
         debug($exception);
         //return new SuperCustomErrorController();
-    }
+    }*/
 }
