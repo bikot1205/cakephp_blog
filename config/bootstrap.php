@@ -47,6 +47,8 @@ use Cake\Utility\Security;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 
+use App\Error\AppError;
+
 /**
  * Read .env file if APP_NAME is not set.
  *
@@ -232,4 +234,7 @@ Log::config('default', function () {
 Log::drop('debug');
 Log::drop('error');
 Log::drop('special');
+
+$errorHandler = new AppError();
+$errorHandler->register();
 

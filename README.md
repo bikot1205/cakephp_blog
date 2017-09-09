@@ -39,4 +39,10 @@ src/Controller/Component/MathComponent.php
 
 * config/bootstrap.php
 
+# Exception
+
+* src/Error/MissingWidgetException.php
+* src/Template/Error/missing_Widget.ctp
+
+
 

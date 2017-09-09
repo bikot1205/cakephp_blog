@@ -11,6 +11,8 @@ use Cake\Utility\Xml;
 use Cake\Error\Debugger;
 use Cake\Log\Log;
 
+use App\Error\MissingWidgetException;
+
 /**
  * Universes Controller
  *
@@ -118,6 +120,8 @@ class UniversesController extends AppController
         // Log::special($xmlString);
         // Log::error($xmlString, ['scope' => ['universes']]);
         Log::debug($xmlString);
+
+        throw new MissingWidgetException(['widget' => 'Pointy']);
     }
 
     /**
