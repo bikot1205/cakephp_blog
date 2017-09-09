@@ -8,11 +8,11 @@ class AppError extends BaseErrorHandler
 {
     public function _displayError($error, $debug)
     {
-        echo 'エラーがありました！';
+        echo '[_displayError]エラーがありました！';
     }
     public function _displayException($exception)
     {
-        echo '例外がありました！';
+        echo '[_displayException]例外がありました！';
     }
     public function handleFatalError($code, $description, $file, $line)
     {

@@ -43,6 +43,7 @@ src/Controller/Component/MathComponent.php
 
 * src/Error/MissingWidgetException.php
 * src/Template/Error/missing_Widget.ctp
+* src/Error/AppExceptionRenderer.php
 
 
 
