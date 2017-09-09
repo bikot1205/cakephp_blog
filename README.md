@@ -26,26 +26,26 @@ src/Controller/Component/MathComponent.php
 
 【controller】universes#customize
 
-# Customize PasswordHasher
+## Customize PasswordHasher
 
 * src/Auth/LegacyPasswordHasher.php
 * src/Controller/AppController.php
 
-# Debug
+## Debug
 
 【controller】universes#customize
 
-# Log and Monolog
+## Log and Monolog
 
 * config/bootstrap.php
 
-# Exception
+## Exception
 
 * src/Error/MissingWidgetException.php
 * src/Template/Error/missing_widget.ctp
 * src/Error/AppExceptionRenderer.php
 
-# Email
+## Email
 
 * src/Template/Email/html/welcome.ctp
 
