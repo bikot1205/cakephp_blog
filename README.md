@@ -53,3 +53,9 @@ src/Controller/Component/MathComponent.php
 ## Paginator
 
 【controller】universes#index
+
+## i18n
+
+* src/Locale/ja_JP/default.po
+* bin/cake i18n extract -> create pot file
+

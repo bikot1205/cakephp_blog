@@ -1,0 +1,17 @@
+msgid "Universes"
+msgstr "宇宙"
+
+msgid "Add Universe"
+msgstr "新規追加"
+
+msgctxt "weather"
+msgid "fine"
+msgstr "今日は良い天気!"
+
+msgctxt "mood"
+msgid "fine"
+msgstr "今日は良い気持ち!"
+
+
+msgid "placeholder_msg" 
+msgstr "***You have traveled {0,number} kilometers in {1,number,integer} weeks"

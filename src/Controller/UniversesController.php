@@ -15,6 +15,7 @@ use App\Error\MissingWidgetException;
 
 use Cake\Mailer\Email;
 use Cake\Network\Exception\NotFoundException;
+use Cake\I18n\I18n;
 
 /**
  * Universes Controller
@@ -39,7 +40,9 @@ class UniversesController extends AppController
     public function initialize()
     {
         parent::initialize();
+        //I18n::setLocale('en_US');
         $this->loadComponent('Math');
+
     }
     
     public function customize()

@@ -1,0 +1,5 @@
+msgid "Universes"
+msgstr "***Universes**"
+
+msgid "Add Universe"
+msgstr ""
