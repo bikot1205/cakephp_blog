@@ -48,5 +48,6 @@ src/Controller/Component/MathComponent.php
 ## Email
 
 * src/Template/Email/html/welcome.ctp
+* src/Mailer/UserMailer.php
 
 

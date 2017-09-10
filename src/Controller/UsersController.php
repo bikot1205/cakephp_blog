@@ -4,10 +4,12 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\Event\Event;
+use Cake\Mailer\MailerAwareTrait;
 
 class UsersController extends AppController
 {
-
+    use MailerAwareTrait;
+    
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
@@ -51,6 +53,7 @@ class UsersController extends AppController
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
+                $this->getMailer('User')->send('welcome', [$user]);
                 $this->Flash->success(__('The user has been saved.'));
                 return $this->redirect(['action' => 'add']);
             }

@@ -133,6 +133,7 @@ class UniversesController extends AppController
               ->send('Message From Gold. 正行');
         */
         // Email Template      
+        /*
         $email = new Email();
         $email->template('welcome', 'default')
               ->emailFormat('html')
@@ -148,7 +149,9 @@ class UniversesController extends AppController
                 ]
               ])
               ->send();
-      
+        */
+        //Email::deliver('yyy@gmail.com', 'Angle***正念', 'Message From Gold. 正行', 
+        //    ['from' => 'xxx@gmail.com']);
     }
 
     /**
