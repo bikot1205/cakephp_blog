@@ -14,6 +14,7 @@ use Cake\Log\Log;
 use App\Error\MissingWidgetException;
 
 use Cake\Mailer\Email;
+use Cake\Network\Exception\NotFoundException;
 
 /**
  * Universes Controller
@@ -24,6 +25,16 @@ use Cake\Mailer\Email;
  */
 class UniversesController extends AppController
 {
+    public $paginate = [
+        'fields' => ['Universes.id', 'Universes.name', 'Universes.created_at'],
+        'maxLimit' => 2,
+        'sortWhitelist' => [
+            'id', 'name'/*, 'Users.username'*/
+        ],
+        /*'order' => [
+            'Universes.created_at' => 'desc'
+        ]*/
+    ];
 
     public function initialize()
     {
@@ -161,9 +172,14 @@ class UniversesController extends AppController
      */
     public function index()
     {
-        $universes = $this->paginate($this->Universes);
-        $this->set(compact('universes'));
-        $this->set('_serialize', ['universes']);
+        try {
+            $universes = $this->paginate($this->Universes);
+            $this->set(compact('universes'));
+            $this->set('_serialize', ['universes']);
+        } catch (NotFoundException $e) {
+        // こちらで最初や最後のページにリダイレクトするような何かをします。
+        // $this->request->getParam('paging') に要求された情報が入ります。
+        }
     }
 
     /**

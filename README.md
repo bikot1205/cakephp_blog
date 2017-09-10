@@ -50,4 +50,6 @@ src/Controller/Component/MathComponent.php
 * src/Template/Email/html/welcome.ctp
 * src/Mailer/UserMailer.php
 
+## Paginator
 
+【controller】universes#index
