@@ -238,3 +238,19 @@ Log::drop('special');
 $errorHandler = new AppError();
 $errorHandler->register();
 
+use Cake\I18n\I18n;
+use Aura\Intl\Package;
+
+I18n::setTranslator('colors', function () {
+    $package = new Package(
+        'default', // フォーマット戦略 (ICU)
+        'default'  // フォールバックドメイン
+    );
+    $package->setMessages([
+        'yellow' => '黄色い',
+        'green' => '緑'
+    ]);
+
+    return $package;
+}, 'ja_JP');
+

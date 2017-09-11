@@ -12,6 +12,11 @@ msgctxt "mood"
 msgid "fine"
 msgstr "今日は良い気持ち!"
 
-
 msgid "placeholder_msg" 
 msgstr "***You have traveled {0,number} kilometers in {1,number,integer} weeks"
+
+msgid "{0,plural,=0{No records found} =1{Found 1 record} other{Found # records}}"
+msgstr "{0,plural,=0{Ningún resultado} =1{1 resultado} other{# resultados}}"
+
+msgid "{placeholder,plural,=0{No records found} =1{Found 1 record} other{Found {1} records}}"
+msgstr "{placeholder,plural,=0{Ningún resultado} =1{1 resultado} other{{1} resultados}}"

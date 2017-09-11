@@ -40,7 +40,7 @@ class UniversesController extends AppController
     public function initialize()
     {
         parent::initialize();
-        //I18n::setLocale('en_US');
+        I18n::setLocale('ja_JP');
         $this->loadComponent('Math');
 
     }
