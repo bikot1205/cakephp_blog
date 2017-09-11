@@ -20,6 +20,7 @@ use Cake\Http\BaseApplication;
 use Cake\Routing\Middleware\AssetMiddleware;
 use Cake\Routing\Middleware\RoutingMiddleware;
 use App\Middleware\TrackingCookieMiddleware;
+use Cake\I18n\Middleware\LocaleSelectorMiddleware;
 
 /**
  * Application setup class.
@@ -48,7 +49,9 @@ class Application extends BaseApplication
             // Add routing middleware.
             ->add(new RoutingMiddleware($this))
 
-            ->add(new TrackingCookieMiddleware());
+            ->add(new TrackingCookieMiddleware())
+            // ミドルウェアの追加し、有効なロケールの設定
+            ->add(new LocaleSelectorMiddleware(['en_US', 'ja_JP']));
 
         return $middlewareQueue;
     }

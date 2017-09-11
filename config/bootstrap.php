@@ -48,6 +48,10 @@ use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 
 use App\Error\AppError;
+use Cake\I18n\I18n;
+use Aura\Intl\Package;
+use Cake\Routing\DispatcherFactory;
+
 
 /**
  * Read .env file if APP_NAME is not set.
@@ -238,9 +242,6 @@ Log::drop('special');
 $errorHandler = new AppError();
 $errorHandler->register();
 
-use Cake\I18n\I18n;
-use Aura\Intl\Package;
-
 I18n::setTranslator('colors', function () {
     $package = new Package(
         'default', // フォーマット戦略 (ICU)
@@ -260,3 +261,5 @@ I18n::setTranslator(
     new Loader('animals', 'ja_JP', 'yaml'),
     'ja_JP'
 );
+
+DispatcherFactory::add('LocaleSelector', ['locales' => ['en_US', 'ja_JP']]);
