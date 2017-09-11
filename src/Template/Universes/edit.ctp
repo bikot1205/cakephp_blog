@@ -8,11 +8,15 @@
     <li class="breadcrumb-item active">Edit</li>
 </ol>
 <div class="universes form large-9 medium-8 columns content">
-    <?= $this->Form->create($universe) ?>
+    <?= $this->Form->create($universe, ['novalidate' => true]) ?>
     <fieldset>
         <legend><?= __('Edit Universe') ?></legend>
         <?php
-            echo $this->Form->control('name');
+            //echo $this->Form->control('name');
+            echo $this->Form->control('name', [
+                'error' => ['_empty' => __('{0} cannot be empty', ["(View)名前"])]
+            ]);
+
             echo $this->Form->control('description');
             echo $this->Form->control('birthday');
             echo $this->Form->control('characteristics', [

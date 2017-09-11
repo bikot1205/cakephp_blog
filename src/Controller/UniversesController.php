@@ -40,7 +40,7 @@ class UniversesController extends AppController
     public function initialize()
     {
         parent::initialize();
-        //I18n::setLocale('ja_JP');
+        I18n::setLocale('ja_JP');
         $this->loadComponent('Math');
 
     }
@@ -213,15 +213,14 @@ class UniversesController extends AppController
         $universe = $this->Universes->newEntity();
         if ($this->request->is('post')) {
             $universe = $this->Universes->patchEntity($universe, $this->request->getData());
-            $universe->created_at = date('Y-m-d H:i:s');
-            $universe->updated_at = date('Y-m-d H:i:s');
+            $universe->created_at = Time::parse('now');
+            $universe->updated_at = Time::parse('now');
             if ($this->Universes->save($universe)) {
                 $this->Flash->success(__('The universe has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The universe could not be saved. Please, try again.'));
-            var_dump($this->request->getData());
         }
         $this->set('config_characteristics', Configure::read('characteristics'));
         $this->set(compact('universe'));
@@ -242,7 +241,7 @@ class UniversesController extends AppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $universe = $this->Universes->patchEntity($universe, $this->request->getData());
-            $universe->updated_at = date('Y-m-d H:i:s');
+            $universe->updated_at = Time::parse('now');
             if ($this->Universes->save($universe)) {
                 $this->Flash->success(__('The universe has been saved.'));
 

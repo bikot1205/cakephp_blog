@@ -59,3 +59,8 @@ src/Controller/Component/MathComponent.php
 * src/Locale/ja_JP/default.po
 * bin/cake i18n extract -> create pot file
 
+## Validation
+
+* $this->Form->create(model_name, ['novalidate' => true]);
+* $this->Form->control: show error message automatically
+

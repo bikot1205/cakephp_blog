@@ -50,7 +50,7 @@ class UniversesTable extends Table
         $validator
             ->scalar('name')
             ->requirePresence('name', 'create')
-            ->notEmpty('name');
+            ->notEmpty('name', __('{0} cannot be empty', ["名前"]));
 
         $validator
             ->scalar('description')
@@ -66,9 +66,8 @@ class UniversesTable extends Table
 
         $validator
             ->dateTime('created_at')
-            //->requirePresence('created_at', 'create')
-            //->notEmpty('created_at');
-            ->allowEmpty('updated_at');
+            ->requirePresence('created_at', 'create')
+            ->notEmpty('created_at');
 
         $validator
             ->dateTime('updated_at')

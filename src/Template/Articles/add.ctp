@@ -1,6 +1,6 @@
 <h1>Add Article</h1>
 <?php
-    echo $this->Form->create($article);
+    echo $this->Form->create($article, ['novalidate' => true]);
     // ここにカテゴリーのコントロールを追加
     echo $this->Form->control('category_id');
     echo $this->Form->control('title');
