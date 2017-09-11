@@ -254,3 +254,9 @@ I18n::setTranslator('colors', function () {
     return $package;
 }, 'ja_JP');
 
+use Cake\I18n\MessagesFileLoader as Loader;
+I18n::setTranslator(
+    'animals',
+    new Loader('animals', 'ja_JP', 'yaml'),
+    'ja_JP'
+);

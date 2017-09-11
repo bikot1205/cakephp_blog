@@ -6,32 +6,12 @@
 ?>
 
 <div class="row">
-  <div class="col-md-4">
-    <?= __x('weather', 'fine') ?>
-  </div>
-  <div class="col-md-4">  
-    <?= __x('mood', 'fine') ?>
-  </div>
-  <div class="col-md-4">  
-    <?= __('placeholder_msg', [5423.344, 5.1]) ?>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-4">
-    <?= __d('colors', 'green'); ?>
-  </div>
-  <div class="col-md-4">
-    <?= __('{0,plural,=0{No records found} =1{Found 1 record} other{Found # records}}', [2]) ?>
-  </div>
-  <div class="col-md-4">  
-    <?= __('{placeholder,plural,=0{No records found} =1{Found 1 record} other{Found {1} records}}', [0, 'many', 'placeholder' => 2]) ?>
-  </div>
-</div>
-
-<div class="row">
   <div class="col-md-12">
     <h1><?= __('Universes') ?></h1>
-    <p><?= $this->Html->link(__('Add Universe'), ['action' => 'add']) ?></p>
+    <p>
+        <span><?= $this->Html->link(__('Add Universe'), ['action' => 'add']) ?></span>
+        <span style="float:right"><?= $this->Html->link(__('Customize Universe'), ['action' => 'customize']) ?></span>
+    </p>
     <table class="table">
         <thead>
             <tr>
