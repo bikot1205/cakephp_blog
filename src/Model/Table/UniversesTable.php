@@ -5,6 +5,7 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use Cake\ORM\Rule\IsUnique;
 
 /**
  * Universes Model
@@ -79,11 +80,41 @@ class UniversesTable extends Table
     public function validationUpdate($validator)
     {
         $validator
-            ->add('name', 'notEmpty', [
-                  'rule' => 'notEmpty',
+            ->add('name', 'notBlank', [
+                  'rule' => 'notBlank',
                   'message' => __('{0} cannot be empty', ["(Update)名前"])
             ]);
         return $validator;
     }
 
+    // テーブルクラスの中で
+    public function buildRules(RulesChecker $rules)
+    {
+        // 作成および更新操作に提供されるルールを追加
+        //$rules->add(function ($entity, $options) {
+            // 失敗／成功を示す真偽値を返す
+        //}, 'ruleName');
+        $rules->add(new IsUnique(['name']), 'uniqueName', [
+            'errorField' => 'name',
+            'message' => '名称が重複しています。'
+        ]);
+
+        // 作成のルールを追加
+        // $rules->addCreate(function ($entity, $options) {
+        //     // 失敗／成功を示す真偽値を返す
+        // }, 'ruleName');
+        
+
+       // 更新のルールを追加
+        // $rules->addUpdate(function ($entity, $options) {
+        //     // 失敗／成功を示す真偽値を返す
+        // }, 'ruleName');
+
+        // 削除のルールを追加
+        // $rules->addDelete(function ($entity, $options) {
+        //     // 失敗／成功を示す真偽値を返す
+        // }, 'ruleName');
+
+        return $rules;
+    }
 }
