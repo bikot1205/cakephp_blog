@@ -99,6 +99,15 @@ class UniversesTable extends Table
             'message' => '名称が重複しています。'
         ]);
 
+        $check = function($entity) {
+            $now = Time::now();
+            return $entity->birthday->i18nFormat('yyyy-MM-dd') > $now->i18nFormat('yyyy-MM-dd');
+        };
+        $rules->add($check, [
+            'errorField' => 'birthday',
+            'message' => '本日以降に指定してください'
+        ]);
+
         // 作成のルールを追加
         // $rules->addCreate(function ($entity, $options) {
         //     // 失敗／成功を示す真偽値を返す
