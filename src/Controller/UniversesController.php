@@ -240,7 +240,8 @@ class UniversesController extends AppController
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $universe = $this->Universes->patchEntity($universe, $this->request->getData());
+            $universe = $this->Universes->patchEntity($universe, 
+                $this->request->getData(), ['validate' => 'update']);
             $universe->updated_at = Time::parse('now');
             if ($this->Universes->save($universe)) {
                 $this->Flash->success(__('The universe has been saved.'));

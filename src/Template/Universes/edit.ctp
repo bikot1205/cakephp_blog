@@ -12,11 +12,11 @@
     <fieldset>
         <legend><?= __('Edit Universe') ?></legend>
         <?php
-            //echo $this->Form->control('name');
+            echo $this->Form->control('name');
+            /*
             echo $this->Form->control('name', [
                 'error' => ['_empty' => __('{0} cannot be empty', ["(View)名前"])]
-            ]);
-
+            ]); */
             echo $this->Form->control('description');
             echo $this->Form->control('birthday');
             echo $this->Form->control('characteristics', [

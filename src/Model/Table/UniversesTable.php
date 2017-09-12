@@ -75,4 +75,15 @@ class UniversesTable extends Table
 
         return $validator;
     }
+
+    public function validationUpdate($validator)
+    {
+        $validator
+            ->add('name', 'notEmpty', [
+                  'rule' => 'notEmpty',
+                  'message' => __('{0} cannot be empty', ["(Update)名前"])
+            ]);
+        return $validator;
+    }
+
 }
