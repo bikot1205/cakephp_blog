@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-12">
-    <table class="table">
+    <table class="table table-striped">
       <caption><strong>i18n</strong></caption>
       <tbody>
         <tr>
@@ -26,13 +26,27 @@
 
 <div class="row">
   <div class="col-md-12">
+    <table class="table table-striped">
+      <caption><strong>Session</strong></caption>
+      <tbody>
+        <tr>
+          <td class="col-md-6"><?= $this->request->session()->read('Config.theme') ?></td>
+          <td class="col-md-6"><?= $this->request->session()->read('Config.language') ?></td>
+        </tr>
+      </tbody>     
+    </table>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
     <span><strong>MathComponent : <?= $mathComponent ?></strong></span>
   </div>
 </div>
 
 <div class="row">
   <div class="col-md-12">
-    <table class="table">
+    <table class="table table-striped">
       <caption>Chronos</caption>
       <tbody>
         <tr>

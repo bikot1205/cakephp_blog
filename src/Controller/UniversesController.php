@@ -166,6 +166,13 @@ class UniversesController extends AppController
         */
         //Email::deliver('yyy@gmail.com', 'Angle***正念', 'Message From Gold. 正行', 
         //    ['from' => 'xxx@gmail.com']);
+
+        $session = $this->request->session();
+        $session->write([
+            'Config.theme' => 'blue',
+            'Config.language' => 'ja',
+        ]);
+        $session->consume('Config.theme');
     }
 
     /**
