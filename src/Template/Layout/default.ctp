@@ -59,6 +59,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
           <ul class="nav navbar-nav">
             <li><a href="/articles">ホーム</a></li>
             <li><a href="/universes">宇宙</a></li>
+            <li><a href="/contact">FormNoModel</a></li>
             <li><a href="/users/logout">ログアウト</a></li>
           </ul>
         </div>
