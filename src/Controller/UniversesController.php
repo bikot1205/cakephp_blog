@@ -44,6 +44,32 @@ class UniversesController extends AppController
         $this->loadComponent('Math');
 
     }
+
+    public function export($format = '')
+    {
+        $format = strtolower($format);
+
+        // ビューマッピングの形式
+        $formats = [
+          'xml' => 'Xml',
+          'json' => 'Json',
+        ];
+
+        // 未知の形式の時はエラー
+        if (!isset($formats[$format])) {
+            throw new NotFoundException(__('Unknown format.'));
+        }
+
+        // ビューをセットする
+        $this->viewBuilder()->className($formats[$format]);
+
+        // 強制ダウンロードを指定する
+        $this->response->download('report-' . date('YmdHis') . '.' . $format);
+
+        $universes = $this->Universes->find('all');
+        $this->set(compact('universes'));
+        $this->set('_serialize', ['universes']);
+    }
     
     public function customize()
     {
