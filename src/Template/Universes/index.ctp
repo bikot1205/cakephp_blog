@@ -7,6 +7,12 @@
 
 <div class="row">
   <div class="col-md-12">
+    <?= $this->Link->getElement('このテキストはとても役に立つ。') ?>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
     <h1><?= __('Universes') ?></h1>
     <p>
         <span><?= $this->Html->link(__('Add Universe'), ['action' => 'add']) ?></span>

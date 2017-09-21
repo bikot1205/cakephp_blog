@@ -14,7 +14,13 @@ class LinkHelper extends Helper
         // 整形されたデータ:
 
         $link = $this->Html->link($title, $url, ['class' => 'edit']);
-
         return '<div class="editOuter">' . $link . '</div>';
+    }
+
+    public function getElement($helptext) {
+        echo $this->_View->element(
+            'helpbox',
+            ['helptext' => $helptext]
+        );
     }
 }
