@@ -43,5 +43,7 @@ class AppView extends UIView
         // これを指定しなければ、「/vendor/friendsofcake/bootstrap-ui/src/Template/Layout/default.cpt」が使われる
         // 'default'指定ならcakePHPのテンプレートが使用される
         $this->layout = 'default';
+
+        $this->loadHelper('Link');
     }
 }

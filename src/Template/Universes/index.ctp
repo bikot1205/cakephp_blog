@@ -35,6 +35,7 @@
                     <?= $this->Html->link(__('View'), ['action' => 'view', $universe->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $universe->id]) ?>
                     <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $universe->id], ['confirm' => __('Are you sure you want to delete # {0}?', $universe->id)]) ?>
+                    <?= $this->Link->makeEdit('Customize Helper', '/universes/edit/' . $universe->id) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
