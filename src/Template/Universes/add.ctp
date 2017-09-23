@@ -9,6 +9,37 @@
     <li class="breadcrumb-item active">New</li>
 </ol>
 
+<?php
+
+$this->Breadcrumbs->templates([
+    'item' => '<li{{attrs}}>{{icon}}<a href="{{url}}"{{innerAttrs}}>{{title}}</a></li>{{separator}}'
+]);
+
+$this->Breadcrumbs->add(
+    __('List Universes'),
+    ['controller' => 'universes', 'action' => 'index'],
+    [
+        'templateVars' => [
+            'icon' => '<span class="glyphicon glyphicon-music" aria-hidden="true"></span>'
+        ]
+    ]
+);
+
+$crumbs = $this->Breadcrumbs->getCrumbs();
+$crumbs = collection($crumbs)->map(function ($crumb) {
+    $crumb['options']['class'] = 'breadcrumb-item';
+    return $crumb;
+})->toArray();
+
+$this->Breadcrumbs->reset()->add($crumbs);
+
+echo $this->Breadcrumbs->render(
+    ['class' => 'breadcrumbs-trail'],
+    ['separator' => '<i class="fa fa-angle-right"></i>']
+);
+
+?>
+
 <div class="row">
   <div class="col-md-12">
     <form role="form" method="post" action="/universes/add">
