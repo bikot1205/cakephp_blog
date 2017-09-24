@@ -11,6 +11,10 @@
 <div class="row">
   <div class="col-md-12">
     <h3><?= h($universe->name) ?></h3>
+    <p><?= $this->Time->format(
+           $universe->created_at,
+           \IntlDateFormatter::FULL) ?>
+    <p>
     <table class="table">
         <tr>
             <th><?= __('Id') ?></th>
