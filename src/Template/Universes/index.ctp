@@ -5,9 +5,28 @@
   */
 ?>
 
+<?php
+$this->Html->scriptStart(['block' => true]);
+echo "alert('I am in the JavaScript');";
+$this->Html->scriptEnd();
+
+$list = [
+    'Languages' => [
+        'English' => [
+            'American',
+            'Canadian',
+            'British',
+        ],
+        'Spanish',
+        'German',
+    ]
+];
+echo $this->Html->nestedList($list);
+?>
+
 <div class="row">
   <div class="col-md-12">
-    <?= $this->Link->getElement('このテキストはとても役に立つ。') ?>
+    <?= $this->Link->getElement('Element:このテキストはとても役に立つ。') ?>
   </div>
 </div>
 
