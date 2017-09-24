@@ -21,7 +21,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('id', 'ID降順LOCK', ['direction' => 'desc', 'lock' => true]) ?></th>
                 <th scope="col"><?= $this->Paginator->sort('name') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('characteristics') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created_at') ?></th>
@@ -49,6 +49,13 @@
     </table>
     <div class="paginator">
         <ul class="pagination">
+            <?= $this->Paginator->first(1) ?>
+            <?= $this->Paginator->current() ?>/<?= $this->Paginator->total() ?>
+            <?= $this->Paginator->generateUrl(['sort' => 'name']) ?>
+            <?= $this->Paginator->limitControl() ?>
+            <?= $this->Paginator->limitControl([25 => 25, 50 => 50]) ?>
+            <?= $this->Paginator->limitControl([25 => 25, 50 => 50], $universe->perPage) ?> 
+
             <?= $this->Paginator->first('<< ' . __('first')) ?>
             <?= $this->Paginator->prev('< ' . __('previous')) ?>
             <?= $this->Paginator->numbers() ?>
@@ -56,6 +63,9 @@
             <?= $this->Paginator->last(__('last') . ' >>') ?>
         </ul>
         <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
+        <p><?= $this->Paginator->counter('{{page}} / {{pages}} ページ, {{current}} 件目 / 全 {{count}} 件,
+             開始レコード番号 {{start}}, 終了レコード番号 {{end}}') ?></p>
+        <p><?= $this->Paginator->counter(['format' => 'range']) ?></p>
     </div>
   </div>  
 </div>
