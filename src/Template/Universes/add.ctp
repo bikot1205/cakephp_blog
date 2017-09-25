@@ -38,6 +38,20 @@ echo $this->Breadcrumbs->render(
     ['separator' => '<i class="fa fa-angle-right"></i>']
 );
 
+///////////////////////////////
+echo $this->Html->getCrumbs(' > ', 'Home');
+$this->Html->addCrumb('Universes', '/universes');
+$this->Html->addCrumb('Add Universe', ['controller' => 'Universes', 'action' => 'add']);
+//echo $this->Html->getCrumbList();
+echo $this->Html->getCrumbList(
+    [
+        'firstClass' => false,
+        'lastClass' => 'active',
+        'class' => 'breadcrumb'
+    ],
+    'Home'
+);
+
 ?>
 
 <div class="row">
