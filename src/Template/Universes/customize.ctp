@@ -136,6 +136,61 @@
         </td>
         <?php } ?>
         </tr>
+        <tr>
+          <td>
+            Shuffle
+          </td>
+        </tr>
+        <tr>
+        <?php
+          foreach($shuffle_arr as $value) { 
+        ?>
+          <td><?= $value ?></td>
+        <?php } ?>
+        </tr>
+
+        <tr>
+          <td>
+            Transpose
+          </td>
+        </tr>
+        <tr>
+        <?php
+          foreach($transpose_list as $in_arr) {
+        ?>
+        <td>
+        <?php
+          foreach($in_arr as $value) {
+        ?>
+          <?= $value ?>,
+        <?php } ?>
+        </td>
+        <?php } ?>
+        </tr>
+        <tr>
+          <td>
+            Insert
+          </td>
+        </tr>
+        <tr>
+        <?php
+          foreach($insert_arr as $in_arr) {
+        ?>
+        <td>
+        <?php
+          foreach($in_arr as $key => $value) {
+            if (is_array($value)) {
+              echo $key . ':';
+              foreach($value as $val) {
+                echo $val . ',';
+              }
+            } else { 
+        ?>
+          <?= $key ?>:<?= $value ?>,
+        <?php }} ?>
+        </td>
+        <?php } ?>
+        </tr>
       </tbody>
     </table>
   </div>

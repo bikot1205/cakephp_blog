@@ -59,8 +59,36 @@ echo $this->Html->nestedList($list);
                     echo $key . ':' . $value->name . ' ';
                 } 
             ?>
+        </div>
+        <div class="col-md-1">SortBy:</div>
+        <div class="col-md-3">
+            <?php 
+                foreach($sortBy_col as $value) {
+                    echo $value->weight . ':' . $value->name . ' ';
+                } 
+            ?>
+        </div>
+        <div class="col-md-1">Sample:</div>
+        <div class="col-md-3">
+            <?php 
+                foreach($sample_col as $value) {
+                    echo $value->id . ':' . $value->name . ' ';
+                } 
+            ?>
         </div>    
     </div>
+    <div class="row">
+        <div class="col-md-1">Take:</div>
+        <div class="col-md-3">
+            <?php 
+                foreach($take_col as $value) {
+                    echo $value->id . ':' . $value->name . ' ';
+                } 
+            ?>
+        </div>
+        <div class="col-md-1">First:</div>
+        <div class="col-md-3"><?= $first_entity->name ?></div>
+    </div>   
     
     <p>
         <span><?= $this->Html->link(__('Add Universe'), ['action' => 'add']) ?></span>

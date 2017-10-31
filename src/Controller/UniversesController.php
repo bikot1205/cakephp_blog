@@ -335,10 +335,45 @@ class UniversesController extends AppController
         $firstYear = new Collection(array_shift($items));
         $zip_list2 = $firstYear->zip($items[0], $items[1])->toList();
 
+        // ->nest 
+        $items = [
+            ['id' => 1, 'parent_id' => null, 'name' => 'Birds'],
+            ['id' => 2, 'parent_id' => 1, 'name' => 'Land Birds'],
+            ['id' => 3, 'parent_id' => 1, 'name' => 'Eagle'],
+            ['id' => 4, 'parent_id' => 1, 'name' => 'Seagull'],
+            ['id' => 5, 'parent_id' => 6, 'name' => 'Clown Fish'],
+            ['id' => 6, 'parent_id' => null, 'name' => 'Fish'],
+        ];
+        $collection = new Collection($items);
+        $nest_arr = $collection->nest('id', 'parent_id')->toArray();
+
+        $collection = new Collection(['a' => 1, 'b' => 2, 'c' => 3]);
+        $shuffle_arr = $collection->shuffle()->toArray();
+
+        $items = [
+           ['Products', '2012', '2013', '2014'],
+           ['Product A', '200', '100', '50'],
+           ['Product B', '300', '200', '100'],
+           ['Product C', '400', '300', '200'],
+        ];
+        $transpose_list = (new Collection($items))->transpose()->toList();
+
+        $users = [
+            ['username' => 'mark'],
+            ['username' => 'juan'],
+            ['username' => 'jose']
+        ];
+        $languages = [
+            ['PHP', 'Python', 'Ruby'],
+            ['Bash', 'PHP', 'Javascript']
+        ];
+        $insert_arr = (new Collection($users))->insert('skills', $languages)->toArray();
+
         $this->set(compact('map_col', 'extract_list', 'combine_col', 'stopWhen_arr',
             'unfold_list', 'unfold_list2', 'chunk_list', 'chunk_list2',
             'filter_arr', 'reject_arr', 'every_under20', 'match_arr',
-            'zip_list', 'zip_list2'
+            'zip_list', 'zip_list2', 'nest_arr', 'shuffle_arr', 'transpose_list',
+            'insert_arr'
         ));
     }
 
@@ -367,9 +402,14 @@ class UniversesController extends AppController
                 return $universe->weight > 15 ? 'large' : 'small';
             });
             $indexBy = $collection->indexBy('id');
-            
+            $sortBy_col = $collection->sortBy('weight', SORT_DESC);
+            $sample_col = $collection->sample(2);
+            $take_col = $collection->sortBy('weight', SORT_DESC)->take(2, 1);
+            $first_entity = $collection->first();
+
             $this->set(compact('totalWeight', 'minWeight', 'avgWeight', 'medianWeight',
-                'countByWeight', 'indexBy'));
+                'countByWeight', 'indexBy', 'sortBy_col', 'sample_col', 'take_col',
+                'first_entity'));
 
         } catch (NotFoundException $e) {
         // こちらで最初や最後のページにリダイレクトするような何かをします。
