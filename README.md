@@ -64,3 +64,7 @@ src/Controller/Component/MathComponent.php
 * $this->Form->create(model_name, ['novalidate' => true]);
 * $this->Form->control: show error message automatically
 
+## Collection
+
+【controller】universes#customize
+

@@ -17,6 +17,8 @@ use Cake\Mailer\Email;
 use Cake\Network\Exception\NotFoundException;
 use Cake\I18n\I18n;
 
+use Cake\Collection\Collection;
+
 /**
  * Universes Controller
  *
@@ -199,6 +201,97 @@ class UniversesController extends AppController
             'Config.language' => 'ja',
         ]);
         $session->consume('Config.theme');
+
+        // Collection
+        // ->each
+        $items = ['a' => 1, 'b' => 2, 'c' => 3];
+        $collection = new Collection($items);
+        // ->map
+        $map_col = $collection->map(function ($value, $key) {
+            return $value * 2;
+        });
+        // ->extract
+        $items = [
+            [
+            'name' => 'James',
+            'phone_numbers' => [
+                ['number' => 'number-1'],
+                ['number' => 'number-2'],
+                ['number' => 'number-3'],
+            ]
+            ],
+            [
+            'name' => 'James',
+            'phone_numbers' => [
+                ['number' => 'number-4'],
+                ['number' => 'number-5'],
+            ]
+            ]
+        ];
+        $extract_col = (new Collection($items))->extract('phone_numbers.{*}.number');
+        $extract_list = $extract_col->toList();
+
+        $items = [
+            ['id' => 1, 'name' => 'foo', 'parent' => 'a'],
+            ['id' => 2, 'name' => 'bar', 'parent' => 'b'],
+            ['id' => 3, 'name' => 'baz', 'parent' => 'a'],
+        ];
+        $combine_col = (new Collection($items))->combine('id', 'name', 'parent');
+        // 配列に変換すると、結果は次のようになります。
+        /*
+        [
+            'a' => [1 => 'foo', 3 => 'baz'],
+            'b' => [2 => 'bar']
+        ];*/
+        
+        // ->stopWhen
+        $items = [10, 20, 50, 1, 2];
+        $collection = new Collection($items);
+        $stopWhen_col = $collection->stopWhen(function ($value, $key) {
+            // 30 より大きい最初の値で停止します。
+            return $value > 30;
+        });
+        $stopWhen_arr = $stopWhen_col->toArray();
+        // $result には [10, 20] が含まれています。
+
+        // ->unfold
+        $items = [[1, 2, 3], [4, 5]];
+        $collection = new Collection($items);
+        $unfold_col = $collection->unfold();
+
+        // $result には [1, 2, 3, 4, 5] が含まれています。
+        $unfold_list = $unfold_col->toList();
+        
+        $oddNumbers = [1, 3, 5, 7];
+        $collection = new Collection($oddNumbers);
+        $unfold_col2 = $collection->unfold(function ($oddNumber) {
+            yield $oddNumber;
+            yield $oddNumber + 1;
+        });
+
+        // $result には [1, 2, 3, 4, 5, 6, 7, 8] が含まれています。
+        $unfold_list2 = $unfold_col2->toList();
+        
+        // ->chunk
+        $items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+        $collection = new Collection($items);
+        $chunk_col = $collection->chunk(2);
+        // [[1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [11]] 
+        $chunk_list = $chunk_col->toList();
+        
+        // ->chunkWithKeys
+        $items = ['a' => 1, 'b' => 2, 'c' => 3, 'd' => [4, 5]];
+        $collection = new Collection($items);
+        $chunk_list2 = $collection->chunkWithKeys(2)->toList();
+        // 作成物
+        /*
+        [
+            ['a' => 1, 'b' => 2],
+            ['c' => 3, 'd' => [4, 5]]
+        ]*/
+
+        $this->set(compact('map_col', 'extract_list', 'combine_col', 'stopWhen_arr', 'unfold_list',
+            'unfold_list2', 'chunk_list', 'chunk_list2'));
     }
 
     /**

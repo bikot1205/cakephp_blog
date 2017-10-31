@@ -1,6 +1,77 @@
 <div class="row">
   <div class="col-md-12">
     <table class="table table-striped">
+      <caption><strong>Collection</strong></caption>
+      <tbody>
+        <tr>
+          <td>
+            Map(value * 2)
+          </td>
+        </tr>
+        <tr>
+        <?php
+          $map_col->each(function ($value, $key) {
+        ?>
+          <td class="col-md-2"><?= $key ?>:<?= $value ?></td>
+        <?php }); ?>
+        </tr>
+        <tr>
+          <td>
+            Unfold
+          </td>
+        </tr>
+        <tr>
+        <?php
+          foreach($unfold_list2 as $value) { 
+        ?>
+          <td><?= $value ?></td>
+        <?php } ?>
+        </tr>
+        <tr>
+          <td>
+            Chunk
+          </td>
+        </tr>
+        <tr>
+        <?php 
+          foreach($chunk_list as $out_arr) {
+        ?>
+        <td>
+        <?php
+            foreach($out_arr as $value) { 
+        ?>
+          <?= $value ?>:
+        <?php } ?>
+        </td>  
+        <?php } ?>
+        </tr>
+        <tr>
+          <td>
+            chunkWithKeys
+          </td>
+        </tr>
+        <tr>
+        <?php 
+          foreach($chunk_list2 as $out_arr) {
+        ?>
+        <td>
+        <?php
+            foreach($out_arr as $key => $value) {
+              if (is_array($value)) $value="配列"; 
+        ?>
+          <?= $key ?>:<?= $value ?>
+        <?php } ?>
+        </td>  
+        <?php } ?>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>        
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped">
       <caption><strong>Helper</strong><small>($this->Text->)</small></caption>
       <tbody>
         <tr>
