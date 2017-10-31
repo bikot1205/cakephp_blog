@@ -33,12 +33,35 @@ echo $this->Html->nestedList($list);
 <div class="row">
   <div class="col-md-12">
     <h1><?= __('Universes') ?></h1>
-    <p>
-        <span>Total Weight: <strong><?= $totalWeight ?></strong><span>
-        <span>Min Weight: <strong><?= h($minWeight->name) ?></strong><span>
-        <span>Avg Weight: <strong><?= h($avgWeight) ?></strong><span>
-        <span>Median Weight: <strong><?= h($medianWeight) ?></strong><span>
-    </p>
+    <div class="row">
+      <div class="col-md-1">Total Weight:</div>
+      <div class="col-md-1"><?= $totalWeight ?></div>
+      <div class="col-md-1">Min Weight:</div>
+      <div class="col-md-1"><?= h($minWeight->name) ?></div>
+      <div class="col-md-1">Avg Weight:</div>
+      <div class="col-md-2"><?= h($avgWeight) ?></div>
+      <div class="col-md-1">Median Weight:</div>
+      <div class="col-md-1"><?= h($medianWeight) ?></div>
+      <div class="col-md-1">CountBy Weight:</div>
+      <div class="col-md-2">
+        <?php 
+            foreach($countByWeight as $key => $value) {
+                echo $key . ':' . $value . ' ';
+            } 
+        ?>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1">IndexBy:</div>
+        <div class="col-md-3">
+            <?php 
+                foreach($indexBy as $key => $value) {
+                    echo $key . ':' . $value->name . ' ';
+                } 
+            ?>
+        </div>    
+    </div>
+    
     <p>
         <span><?= $this->Html->link(__('Add Universe'), ['action' => 'add']) ?></span>
         <span style="float:right"><?= $this->Html->link(__('Customize Universe'), ['action' => 'customize']) ?></span>

@@ -66,5 +66,5 @@ src/Controller/Component/MathComponent.php
 
 ## Collection
 
-【controller】universes#customize
+【controller】universes#customize, universes#index 
 

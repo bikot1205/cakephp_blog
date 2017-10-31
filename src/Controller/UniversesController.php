@@ -321,9 +321,24 @@ class UniversesController extends AppController
         $match_col = $collection->match(['parent' => 'a']);
         $match_arr = $match_col->toArray();  
         
+        $odds = new Collection([1, 3, 5]);
+        $pairs = new Collection([2, 4, 6]);
+        $zip_list = $odds->zip($pairs)->toList(); 
+
+        $items = [
+            2014 => ['jan' => 100, 'feb' => 200],
+            2015 => ['jan' => 300, 'feb' => 500],
+            2016 => ['jan' => 400, 'feb' => 600],
+        ];
+
+        // jan と feb のデータを取得
+        $firstYear = new Collection(array_shift($items));
+        $zip_list2 = $firstYear->zip($items[0], $items[1])->toList();
+
         $this->set(compact('map_col', 'extract_list', 'combine_col', 'stopWhen_arr',
             'unfold_list', 'unfold_list2', 'chunk_list', 'chunk_list2',
-            'filter_arr', 'reject_arr', 'every_under20', 'match_arr'
+            'filter_arr', 'reject_arr', 'every_under20', 'match_arr',
+            'zip_list', 'zip_list2'
         ));
     }
 
@@ -348,8 +363,13 @@ class UniversesController extends AppController
             $minWeight = $collection->min('weight');
             $avgWeight = $collection->avg('weight');
             $medianWeight = $collection->median('weight');
+            $countByWeight = $collection->countBy(function ($universe) {
+                return $universe->weight > 15 ? 'large' : 'small';
+            });
+            $indexBy = $collection->indexBy('id');
             
-            $this->set(compact('totalWeight', 'minWeight', 'avgWeight', 'medianWeight'));
+            $this->set(compact('totalWeight', 'minWeight', 'avgWeight', 'medianWeight',
+                'countByWeight', 'indexBy'));
 
         } catch (NotFoundException $e) {
         // こちらで最初や最後のページにリダイレクトするような何かをします。

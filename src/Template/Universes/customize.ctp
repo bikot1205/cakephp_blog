@@ -100,6 +100,42 @@
         |</td>
         <?php } ?>
         </tr>
+        <tr>
+          <td>
+            Zip
+          </td>
+        </tr>
+        <tr>
+        <?php
+          foreach($zip_list as $in_arr) {
+        ?>
+        <td>
+        <?php
+          foreach($in_arr as $value) {
+        ?>
+          <?= $value ?>,
+        <?php } ?>
+        </td>
+        <?php } ?>
+        </tr>
+        <tr>
+          <td>
+            Zip2
+          </td>
+        </tr>
+        <tr>
+        <?php
+          foreach($zip_list2 as $in_arr) {
+        ?>
+        <td>
+        <?php
+          foreach($in_arr as $value) {
+        ?>
+          <?= $value ?>,
+        <?php } ?>
+        </td>
+        <?php } ?>
+        </tr>
       </tbody>
     </table>
   </div>
