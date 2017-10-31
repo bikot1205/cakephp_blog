@@ -64,6 +64,42 @@
         </td>  
         <?php } ?>
         </tr>
+        
+        <tr>
+          <td>
+            Reject
+          </td>
+        </tr>
+        <tr>
+        <?php
+          foreach($reject_arr as $value) { 
+        ?>
+          <td><?= $value ?></td>
+        <?php } ?>
+        </tr>
+        <tr>
+          <td>
+            Every(<?php var_dump($every_under20) ?>)
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Match
+          </td>
+        </tr>
+        <tr>
+        <?php
+          foreach($match_arr as $in_arr) {
+        ?>
+        <td>
+        <?php
+            foreach($in_arr as $key => $value) {
+        ?>
+          <?= $key ?>:<?= $value ?>
+        <?php } ?>
+        |</td>
+        <?php } ?>
+        </tr>
       </tbody>
     </table>
   </div>

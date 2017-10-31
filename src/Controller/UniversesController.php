@@ -252,8 +252,7 @@ class UniversesController extends AppController
             return $value > 30;
         });
         $stopWhen_arr = $stopWhen_col->toArray();
-        // $result には [10, 20] が含まれています。
-
+        
         // ->unfold
         $items = [[1, 2, 3], [4, 5]];
         $collection = new Collection($items);
@@ -290,8 +289,42 @@ class UniversesController extends AppController
             ['c' => 3, 'd' => [4, 5]]
         ]*/
 
-        $this->set(compact('map_col', 'extract_list', 'combine_col', 'stopWhen_arr', 'unfold_list',
-            'unfold_list2', 'chunk_list', 'chunk_list2'));
+        // ->filter
+        $items = [10, 20, 50, 1, 2];
+        $collection = new Collection($items);
+        $filter_col = $collection->filter(function ($value, $key) {
+            return $value < 20;
+        });
+        $filter_arr = $filter_col->toArray();
+        // $result には [10, 1, 2] が含まれています。
+
+        // ->reject
+        $reject_col = $collection->reject(function ($value, $key) {
+            return $value < 20;
+        });
+        $reject_arr = $reject_col->toArray();
+        // $result には [20, 50] が含まれています。
+
+        // ->every
+        $every_under20= $collection->every(function ($value) {
+            return $value < 20;
+        });
+        // false
+
+        // ->match
+        $items = [
+            ['id' => 1, 'name' => 'foo', 'parent' => 'a'],
+            ['id' => 2, 'name' => 'bar', 'parent' => 'b'],
+            ['id' => 3, 'name' => 'baz', 'parent' => 'a'],
+        ];
+        $collection = new Collection($items);
+        $match_col = $collection->match(['parent' => 'a']);
+        $match_arr = $match_col->toArray();  
+        
+        $this->set(compact('map_col', 'extract_list', 'combine_col', 'stopWhen_arr',
+            'unfold_list', 'unfold_list2', 'chunk_list', 'chunk_list2',
+            'filter_arr', 'reject_arr', 'every_under20', 'match_arr'
+        ));
     }
 
     /**
