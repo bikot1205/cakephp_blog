@@ -75,6 +75,10 @@ echo $this->Html->getCrumbList(
         </select>
       </div>
       <div class="form-group">
+        <label for="weight">Weight</label>
+        <input type="text" class="form-control" id="weight" name="weight" />
+      </div>
+      <div class="form-group">
         <label class="control-label" for="birthday">
           Birthday
         </label>

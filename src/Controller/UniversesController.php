@@ -338,6 +338,19 @@ class UniversesController extends AppController
             $universes = $this->paginate($this->Universes);
             $this->set(compact('universes'));
             $this->set('_serialize', ['universes']);
+
+            $all_universes = $this->Universes->find();
+            $collection = new Collection($all_universes);
+            $totalWeight = $collection->reduce(function ($accumulated, $universe) {
+                return $accumulated + $universe->weight;
+            }, 0);
+
+            $minWeight = $collection->min('weight');
+            $avgWeight = $collection->avg('weight');
+            $medianWeight = $collection->median('weight');
+            
+            $this->set(compact('totalWeight', 'minWeight', 'avgWeight', 'medianWeight'));
+
         } catch (NotFoundException $e) {
         // こちらで最初や最後のページにリダイレクトするような何かをします。
         // $this->request->getParam('paging') に要求された情報が入ります。

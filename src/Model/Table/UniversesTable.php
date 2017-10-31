@@ -67,6 +67,10 @@ class UniversesTable extends Table
             ->allowEmpty('characteristics');
 
         $validator
+            ->integer('weight')
+            ->allowEmpty('weight');            
+
+        $validator
             ->dateTime('created_at')
             ->requirePresence('created_at', 'create')
             ->notEmpty('created_at');

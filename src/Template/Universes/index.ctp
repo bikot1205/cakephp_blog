@@ -6,9 +6,9 @@
 ?>
 
 <?php
-$this->Html->scriptStart(['block' => true]);
-echo "alert('I am in the JavaScript');";
-$this->Html->scriptEnd();
+//$this->Html->scriptStart(['block' => true]);
+//echo "alert('I am in the JavaScript');";
+//$this->Html->scriptEnd();
 
 $list = [
     'Languages' => [
@@ -33,6 +33,12 @@ echo $this->Html->nestedList($list);
 <div class="row">
   <div class="col-md-12">
     <h1><?= __('Universes') ?></h1>
+    <p>
+        <span>Total Weight: <strong><?= $totalWeight ?></strong><span>
+        <span>Min Weight: <strong><?= h($minWeight->name) ?></strong><span>
+        <span>Avg Weight: <strong><?= h($avgWeight) ?></strong><span>
+        <span>Median Weight: <strong><?= h($medianWeight) ?></strong><span>
+    </p>
     <p>
         <span><?= $this->Html->link(__('Add Universe'), ['action' => 'add']) ?></span>
         <span style="float:right"><?= $this->Html->link(__('Customize Universe'), ['action' => 'customize']) ?></span>

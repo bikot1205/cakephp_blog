@@ -41,6 +41,10 @@
             </td>
         </tr>
         <tr>
+            <th><?= __('Weight') ?></th>
+            <td><?= h($universe->weight) ?></td>
+        </tr>
+        <tr>
             <th><?= __('Created At') ?></th>
             <td><?= date('Y-m-d H:i:s', strtotime($universe->created_at)) ?></td>
         </tr>

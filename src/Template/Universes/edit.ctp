@@ -23,6 +23,7 @@
             'options' => $config_characteristics,
             'empty' => true
             ]);
+            echo $this->Form->control('weight');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary']) ?>
