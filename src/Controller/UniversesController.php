@@ -75,6 +75,22 @@ class UniversesController extends AppController
     
     public function customize()
     {
+        /*$universes = $this->Universes
+            ->find()
+            ->select(['id', 'name', 'weight'])
+            ->where(['id !=' => 2])
+            ->order(['weight' => 'DESC'])
+            ->map(function ($row) { // map() は Collection のメソッドで、クエリーを実行します
+                $row->weight = $row->weight * 2;
+                return $row;
+             });
+        */
+        $query = $this->Universes->find();
+        $universes = $query->select(['slug' => $query->func()->concat(['id' => 'identifier', '-', 'name' => 'identifier'])])
+        ->select(['id', 'name', 'weight']);
+ 
+        $this->set(compact('universes'));
+
         $mathComponent = $this->Math->doComplexOperation(3, 5);
         $this->set(compact('mathComponent'));
         // Chronos

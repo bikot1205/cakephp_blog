@@ -1,6 +1,25 @@
 <div class="row">
   <div class="col-md-12">
     <table class="table table-striped">
+      <caption><strong>Universes</strong></caption>
+      <tbody>
+        <?php
+          foreach($universes as $value) {
+        ?>  
+        <tr>
+          <td><?= $value['slug'] ?></td>
+          <td><?= $value['name'] ?></td>
+          <td><?= $value['weight'] ?></td>
+        </tr>
+        <?php } ?>
+      </tbody>
+    </table>
+  </div>
+</div>          
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped">
       <caption><strong>Collection</strong></caption>
       <tbody>
         <tr>
