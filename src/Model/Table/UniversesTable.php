@@ -35,6 +35,10 @@ class UniversesTable extends Table
         $this->setTable('universes');
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
+
+        $this->hasMany('Plants', [
+            'foreignKey' => 'universe_id'
+        ]);
     }
 
     /**

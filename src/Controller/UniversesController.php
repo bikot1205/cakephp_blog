@@ -85,7 +85,14 @@ class UniversesController extends AppController
                 return $row;
              });
         */
-        $query = $this->Universes->find();
+        //$query = $this->Universes->find()->contain(['Plants']);
+        $query = $this->Universes->find()->contain('Plants', function ($q) {
+            return $q
+                ->select(['Plants.universe_id', 'name_en'])
+                ->where(['Plants.color' => 'green']);
+        });
+
+
         $universes = $query->select(['slug' => $query->func()->concat(['id' => 'identifier', '-', 'name' => 'identifier'])])
         ->select(['id', 'name', 'weight']);
  

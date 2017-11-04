@@ -7,8 +7,15 @@
           foreach($universes as $value) {
         ?>  
         <tr>
+          <td>
+            <?php if (count($value->plants) >0) { ?> Plants: <?php } ?>
+            <?php
+              foreach($value->plants as $plant) {
+                echo $plant->name_en . ',';
+              }
+            ?>
+          </td>
           <td><?= $value['slug'] ?></td>
-          <td><?= $value['name'] ?></td>
           <td><?= $value['weight'] ?></td>
         </tr>
         <?php } ?>
