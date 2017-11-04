@@ -86,16 +86,31 @@ class UniversesController extends AppController
              });
         */
         //$query = $this->Universes->find()->contain(['Plants']);
+        /*
         $query = $this->Universes->find()->contain('Plants', function ($q) {
             return $q
                 ->select(['Plants.universe_id', 'name_en'])
                 ->where(['Plants.color' => 'green']);
-        });
-
+        });*/
+        /*
+        $query = $this->Universes->find()->contain(['Plants' => [
+                'sort' => ['Plants.color' => 'ASC']
+            ]
+        ]);
 
         $universes = $query->select(['slug' => $query->func()->concat(['id' => 'identifier', '-', 'name' => 'identifier'])])
         ->select(['id', 'name', 'weight']);
- 
+        */
+        
+        $universes = $this->Universes->find()
+            ->select(['id', 'name', 'weight'])
+            //->matching(
+            ->notMatching(
+                'Plants', function ($q) {
+                    return $q->where(['Plants.color' => 'green']);
+                }
+            );
+        
         $this->set(compact('universes'));
 
         $mathComponent = $this->Math->doComplexOperation(3, 5);
