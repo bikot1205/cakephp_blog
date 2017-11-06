@@ -29,4 +29,14 @@ class Universe extends Entity
         '*' => true,
         'id' => false
     ];
+    
+    protected $_virtual = ['name_weight'];
+    //protected $_hidden = ['password'];
+
+    protected function _getNameWeight()
+    {
+        return $this->_properties['name'] . '***' .
+            $this->_properties['weight'];
+    }
+
 }

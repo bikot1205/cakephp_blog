@@ -101,7 +101,7 @@ class UniversesController extends AppController
         $universes = $query->select(['slug' => $query->func()->concat(['id' => 'identifier', '-', 'name' => 'identifier'])])
         ->select(['id', 'name', 'weight']);
         */
-        
+        /*
         $universes = $this->Universes->find()
             ->select(['id', 'name', 'weight'])
             //->matching(
@@ -110,8 +110,26 @@ class UniversesController extends AppController
                     return $q->where(['Plants.color' => 'green']);
                 }
             );
+        */
         
-        $this->set(compact('universes'));
+        /* 
+        $query = $this->Universes->find();
+        $universes = $query->select(['total_plants' => $query->func()->count('Plants.id')])
+              ->leftJoinWith('Plants')
+              ->group(['Universes.id'])
+              ->enableAutoFields(true);
+        */
+
+        $query = $this->Universes->find();
+        $universes = $query->innerJoin(
+            ['Plants' => 'plants'],
+            ['Plants.color' => 'green',
+             'Plants.universe_id = Universes.id'
+            ],
+            ['Plants.color' => 'string']);
+
+        $universes_arr = $universes->toArray();
+        $this->set(compact('universes', 'universes_arr'));
 
         $mathComponent = $this->Math->doComplexOperation(3, 5);
         $this->set(compact('mathComponent'));

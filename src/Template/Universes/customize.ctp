@@ -18,9 +18,20 @@
           </td>
           <td><?= $value['slug'] ?></td>
           -->
+          <td><?= $value['name'] ?></td>
           <td><?= $value['weight'] ?></td>
+          <td><?= $value['total_plants'] ?></td>
+          <td><?= $value['name_weight'] ?></td>
         </tr>
         <?php } ?>
+
+        <tr>
+        <?php
+          foreach($universes_arr as $value) {
+        ?>
+          <td><?= h($value) ?></td>
+        <?php } ?>
+        </tr>
       </tbody>
     </table>
   </div>

@@ -68,3 +68,9 @@ src/Controller/Component/MathComponent.php
 
 【controller】universes#customize, universes#index 
 
+## Entity
+
+【Entity】Universe
+
+* when converting to array or json, virtual field and hidden field 
+
