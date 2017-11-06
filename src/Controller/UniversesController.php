@@ -130,18 +130,24 @@ class UniversesController extends AppController
             ['Plants.color' => 'string']);
         */ 
 
+        /*  
         $universes = $this->Universes->find('all', [
             //'conditions' => ['Universes.created >' => new DateTime('-10 days')],
             'contain' => ['Plants'],
             'limit' => 2,
             'order' => ['Universes.id' => 'DESC'] 
-        ]);
+        ]); */
+
+        $universes = $this->Universes->find('large', ['weight' => 15]);
 
         $universes_arr = $universes->toArray();
+        $universes_list = $this->Universes->find('list')->toArray();
+        /*
         $universes_list = $this->Universes->find('list', [
             'keyField' => 'name',
-            'valueField' => 'description'
+            'valueField' => 'name_weight'
         ])->toArray(); 
+        */
         $this->set(compact('universes', 'universes_arr', 'universes_list'));
 
         $mathComponent = $this->Math->doComplexOperation(3, 5);

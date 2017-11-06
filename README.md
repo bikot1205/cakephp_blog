@@ -74,3 +74,9 @@ src/Controller/Component/MathComponent.php
 
 * when converting to array or json, virtual field and hidden field 
 
+## Query
+
+* Finder: UniversesTable->findLarge 
+
+
+

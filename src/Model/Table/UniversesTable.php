@@ -33,7 +33,9 @@ class UniversesTable extends Table
         parent::initialize($config);
 
         $this->setTable('universes');
-        $this->setDisplayField('name');
+        //$this->setDisplayField('name');
+        $this->setDisplayField('name_weight');
+
         $this->setPrimaryKey('id');
 
         $this->hasMany('Plants', [
@@ -134,5 +136,11 @@ class UniversesTable extends Table
         // }, 'ruleName');
 
         return $rules;
+    }
+
+    public function findLarge(Query $query, array $options)
+    {
+        $weight = $options['weight'];
+        return $query->where(['weight >' => $weight]);
     }
 }
