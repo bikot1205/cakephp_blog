@@ -32,6 +32,15 @@
           <td><?= h($value) ?></td>
         <?php } ?>
         </tr>
+
+        <tr>
+        <?php
+          foreach($universes_list as $key => $value) {
+        ?>
+          <td><?= h($key) ?>:<?= h($value) ?></td>
+        <?php } ?>
+        </tr>
+
       </tbody>
     </table>
   </div>

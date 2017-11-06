@@ -120,6 +120,7 @@ class UniversesController extends AppController
               ->enableAutoFields(true);
         */
 
+        /*
         $query = $this->Universes->find();
         $universes = $query->innerJoin(
             ['Plants' => 'plants'],
@@ -127,9 +128,21 @@ class UniversesController extends AppController
              'Plants.universe_id = Universes.id'
             ],
             ['Plants.color' => 'string']);
+        */ 
+
+        $universes = $this->Universes->find('all', [
+            //'conditions' => ['Universes.created >' => new DateTime('-10 days')],
+            'contain' => ['Plants'],
+            'limit' => 2,
+            'order' => ['Universes.id' => 'DESC'] 
+        ]);
 
         $universes_arr = $universes->toArray();
-        $this->set(compact('universes', 'universes_arr'));
+        $universes_list = $this->Universes->find('list', [
+            'keyField' => 'name',
+            'valueField' => 'description'
+        ])->toArray(); 
+        $this->set(compact('universes', 'universes_arr', 'universes_list'));
 
         $mathComponent = $this->Math->doComplexOperation(3, 5);
         $this->set(compact('mathComponent'));
